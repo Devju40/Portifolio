@@ -2,13 +2,14 @@
 
 :root {
   --fonte-primaria: 'Roboto', sans-serif;
-  --fundo-site: #030115;
-  --cor-font: #fefefe;
-  --cor-borda: #e63946; /* ajustado para um vermelho menos “bruto” */
+  --fundo-site: #f9f9fb;
+  --cor-font: #1c1c1c;
+  --cor-borda: #0077b6; /* azul elegante para o tema claro */
   --transicao-curta: 0.25s ease;
   --max-content-width: 1200px;
 }
 
+/* Reset */
 *,
 *::before,
 *::after {
@@ -17,23 +18,28 @@
   box-sizing: border-box;
 }
 
+/* Corpo */
 body {
   background-color: var(--fundo-site);
   color: var(--cor-font);
   font-family: var(--fonte-primaria);
   line-height: 1.5;
   min-height: 100%;
+  transition: background-color var(--transicao-curta), color var(--transicao-curta);
 }
 
+/* Cabeçalho e navegação */
 header {
   width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 nav {
   display: flex;
   justify-content: flex-end;
-  border-bottom: 1px solid var(--cor-borda);
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 nav ul {
@@ -58,7 +64,7 @@ nav a {
 
 nav a:hover,
 nav a:focus-visible {
-  color: #ff6b6b;
+  color: var(--cor-borda);
 }
 
 nav a::after {
@@ -77,12 +83,13 @@ nav a:focus-visible::after {
   width: 100%;
 }
 
+/* Conteúdo principal */
 main {
   max-width: var(--max-content-width);
   margin: 0 auto;
 }
 
-/* Seções principais */
+/* Seções */
 .tela-main {
   display: flex;
   flex-direction: column-reverse;
@@ -91,7 +98,7 @@ main {
   gap: 5%;
   width: 100%;
   padding: 2rem 1rem;
-  min-height: calc(100vh - 60px); /* considerando header */
+  min-height: calc(100vh - 60px);
   text-align: center;
 }
 
@@ -100,35 +107,36 @@ main {
   flex-direction: column;
   width: 100%;
   padding: 4rem 2rem;
-  border: 1px solid var(--cor-borda);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #ffffff;
   gap: 1.5rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Títulos centralizados */
+/* Títulos */
 .titulo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   gap: 0.5rem;
 }
 
-/* Efeitos de hover nos nomes */
 .cor-titulo,
 .cor-nome {
   transition: color var(--transicao-curta);
 }
 
 .cor-titulo:hover {
-  color: red;
+  color: var(--cor-borda);
 }
 
 .cor-nome:hover {
-  color: #4da8da;
+  color: #0096c7;
 }
 
-/* Imagem do perfil */
+/* Imagem de perfil */
 .campo-imagem {
   display: flex;
   align-items: center;
@@ -143,7 +151,7 @@ main {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid var(--cor-borda);
+  border: 3px solid var(--cor-borda);
   display: block;
 }
 
@@ -151,6 +159,7 @@ main {
 .campo-texto {
   font-size: 1rem;
   padding: 1rem;
+  color: #2b2b2b;
 }
 
 /* Experiências */
@@ -164,9 +173,12 @@ main {
 .texto-foto {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--cor-borda);
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #ffffff;
   padding: 1rem;
   gap: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .trampo {
@@ -187,9 +199,10 @@ main {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: 8px;
 }
 
-/* Listas (cursos / habilidades / redes) */
+/* Listas */
 .lista {
   width: 100%;
   margin-top: 1rem;
@@ -212,9 +225,20 @@ main {
   text-align: center;
   gap: 0.5rem;
   max-width: 220px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform var(--transicao-curta), box-shadow var(--transicao-curta);
 }
 
-/* Ícones dentro da lista */
+.lista li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Ícones */
 .lista img {
   width: 60px;
   height: auto;
@@ -226,7 +250,7 @@ main {
   transform: scale(1.1);
 }
 
-/* Responsividade básica */
+/* Responsividade */
 @media (min-width: 768px) {
   .tela-main {
     flex-direction: row;
@@ -259,11 +283,91 @@ main {
 
 /* Foco acessível */
 a:focus-visible {
-  outline: 2px dashed #ffffff;
+  outline: 2px dashed #0077b6;
   outline-offset: 2px;
 }
 
-/* Utilitários */
-.hidden {
-  display: none !important;
+/* Botão do modo escuro */
+button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: var(--cor-borda);
+  color: #ffffff;
+  font-weight: 500;
+  transition: background-color var(--transicao-curta);
+}
+
+button:hover {
+  background-color: #0096c7;
+}
+
+
+/* =======================
+   🌙 MODO ESCURO COMPLETO
+======================= */
+body.dark {
+  background-color: #030115;
+  color: #fefefe;
+}
+
+/* Cabeçalho e navegação */
+body.dark header {
+  background-color: #05051a;
+  border-bottom: 1px solid #e63946;
+  box-shadow: none;
+}
+
+body.dark nav a {
+  color: #fefefe;
+}
+
+body.dark nav a:hover,
+body.dark nav a:focus-visible {
+  color: #ff6b6b;
+}
+
+body.dark nav a::after {
+  background: #e63946;
+}
+
+/* Seções e blocos */
+body.dark .tela,
+body.dark .texto-foto,
+body.dark .lista li {
+  background-color: #0b0824;
+  border: 1px solid #e63946;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .campo-texto {
+  color: #fefefe;
+}
+
+/* Títulos e hovers */
+body.dark .cor-titulo:hover {
+  color: #ff6b6b;
+}
+
+body.dark .cor-nome:hover {
+  color: #4da8da;
+}
+
+/* Ícones e botões */
+body.dark button {
+  background-color: #e63946;
+  color: #ffffff;
+}
+
+body.dark button:hover {
+  background-color: #ff6b6b;
+}
+
+body.dark .lista li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(255,255,255,0.1);
 }
