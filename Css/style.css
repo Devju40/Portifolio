@@ -25,14 +25,14 @@ body {
   font-family: var(--fonte-primaria);
   line-height: 1.5;
   min-height: 100%;
-  transition: background-color var(--transicao-curta), color var(--transicao-curta);
+  transition: background-color var(--transicao-curta), color var(--transicao-curta), border-color var(--transicao-curta);
 }
 
 /* Cabeçalho e navegação */
 header {
   width: 100%;
   background-color: #ffffff;
-  border-bottom: 1px solid #dcdcdc;
+  border-bottom: 1px solid var(--cor-borda);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
@@ -107,7 +107,7 @@ main {
   flex-direction: column;
   width: 100%;
   padding: 4rem 2rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--cor-borda);
   border-radius: 12px;
   background-color: #ffffff;
   gap: 1.5rem;
@@ -151,8 +151,9 @@ main {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid var(--cor-borda);
+  border: 3px solid var(--cor-borda); /* azul no tema claro */
   display: block;
+  transition: border-color var(--transicao-curta);
 }
 
 /* Texto */
@@ -173,7 +174,7 @@ main {
 .texto-foto {
   display: flex;
   flex-direction: column;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--cor-borda);
   border-radius: 10px;
   background-color: #ffffff;
   padding: 1rem;
@@ -226,11 +227,15 @@ main {
   gap: 0.5rem;
   max-width: 220px;
   background-color: #ffffff;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--cor-borda);
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: transform var(--transicao-curta), box-shadow var(--transicao-curta);
+}
+
+.lista li a {
+  text-decoration: none;
 }
 
 .lista li:hover {
@@ -283,7 +288,7 @@ main {
 
 /* Foco acessível */
 a:focus-visible {
-  outline: 2px dashed #0077b6;
+  outline: 2px dashed var(--cor-borda);
   outline-offset: 2px;
 }
 
@@ -305,7 +310,6 @@ button {
 button:hover {
   background-color: #0096c7;
 }
-
 
 /* =======================
    🌙 MODO ESCURO COMPLETO
@@ -357,7 +361,7 @@ body.dark .cor-nome:hover {
   color: #4da8da;
 }
 
-/* Ícones e botões */
+/* Botão */
 body.dark button {
   background-color: #e63946;
   color: #ffffff;
@@ -370,4 +374,8 @@ body.dark button:hover {
 body.dark .lista li:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+}
+
+body.dark .minha-foto {
+  border-color: #e63946; /* vermelho no tema dark */
 }
